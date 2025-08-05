@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Users Dashboard</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lodash CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash"></script>
+  <!-- Day.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/th.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #000000;
+      text-shadow: #deadad 0px 0px 10px;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: #333 0px 0px 10px 0px;
+      width: 220px;
+      text-align: center;
+    }
+
+    .card img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+
+    canvas {
+      margin: 40px auto;
+      display: none; /* ซ่อนกราฟก่อน */
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+
+    small {
+      color: gray;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>รายชื่อผู้ใช้ (RandomUser API)</h1>
+
+  <!-- ปุ่มโหลดข้อมูล -->
+  <button onclick="loadData()">โหลดข้อมูลผู้ใช้</button>
+
+  <!-- แสดงกราฟสัดส่วนเพศ -->
+  <canvas id="genderChart"></canvas>
+
+  <div class="container" id="userContainer">
+    <!-- Cards จะมาแสดงตรงนี้ -->
+  </div>
+
+  <script>
+    dayjs.locale('th'); // ใช้ภาษาไทย
+
+    async function fetchUsers(count = 20) {
+      const res = await fetch(`https://randomuser.me/api/?results=${count}`);
+      const data = await res.json();
+      return data.results;
+    }
+
+    function displayUsers(users) {
+      const container = document.getElementById("userContainer");
+      container.innerHTML = "";
+
+      users.forEach(user => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${user.picture.large}" alt="profile">
+          <h3>${user.name.title} ${user.name.first} ${user.name.last}</h3>
+          <p>${user.email}</p>
+          <p><strong>${user.gender === "male" ? "ชาย" : "หญิง"}</strong></p>
+          <small>วันเกิด: ${dayjs(user.dob.date).format('D MMMM BBBB')}</small>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderGenderChart(users) {
+      const genderCount = _.countBy(users, 'gender');
+      const ctx = document.getElementById("genderChart").getContext("2d");
+
+      document.getElementById("genderChart").style.display = "block"; // แสดงกราฟ
+
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['ชาย', 'หญิง'],
+          datasets: [{
+            label: 'เพศ',
+            data: [genderCount.male || 0, genderCount.female || 0],
+            backgroundColor: ['#36A2EB', '#FF6384'],
+            borderColor: ['#fff', '#fff'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
+
+    async function loadData() {
+      const users = await fetchUsers();
+      displayUsers(users);
+      renderGenderChart(users);
+    }
+  </script>
+</body>
+</html>

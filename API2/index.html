@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Axios with HTML</title>
+
+  <!-- ✅ เพิ่ม axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f2f5;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    ul {
+      margin-top: 20px;
+    }
+
+    li {
+      background: #fff;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ตัวอย่างการใช้ Axios ใน HTML</h1>
+
+  <button onclick="fetchData()">ดึงข้อมูลผู้ใช้</button>
+
+  <ul id="user-list"></ul>
+
+  <script>
+    async function fetchData() {
+      const userList = document.getElementById('user-list');
+      userList.innerHTML = '<li>กำลังโหลดข้อมูล...</li>';
+
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+        const users = response.data;
+
+        userList.innerHTML = ''; // ล้างข้อมูลเดิม
+
+        users.forEach(user => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <strong>${user.name}</strong><br>
+        ${user.imahge ? `<img src="${user.image}" alt="${user.name}" style="width:50px;height:50px;">` : ''}
+            📧 ${user.email}<br>
+            🌐 ${user.website}
+          `;
+          userList.appendChild(li);
+        });
+
+      } catch (error) {
+        console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error.message);
+        userList.innerHTML = '<li>เกิดข้อผิดพลาดในการดึงข้อมูล</li>';
+      }
+    }
+  </script>
+</body>
+
+</html>
+
+
+
+</body>
+
+</html>

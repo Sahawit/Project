@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="th">
+    <head>
+
+    </head>
+<body>
+
+    <div id="user-profile">ยินดีต้อนรับผู้ใช้!</div>
+    <div id="guest-message">กรุณาเข้าสู่ระบบเพื่อใช้งาน</div>
+
+    <script>
+        let isLoggedIn = true;
+        const userProfile = document.getElementById("user-profile");
+        const guestMessage = document.getElementById("guest-message");
+        if (isLoggedIn) {
+            userProfile.style.display = "block";
+            guestMessage.style.display = "none";
+        } else {
+            userProfile.style.display = "none";
+            guestMessage.style.display = "block";
+        }
+    </script>
+</body>  
+</html>

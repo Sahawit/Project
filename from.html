@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<body>
+    ร้านขายของที่ระลึก สาขาวิทยาการคอมพิวเตอร์
+
+    Admin สำหรับจัดเตรียมสินค้า
+
+    <form action="" method="post">
+        <h1>เสื้อ</h1>
+        <label for="product-size" ขนาด></label>
+        <select name="product-size" id="product-size">
+            <option value="">---กรุณาเลือกขนาด---</option>
+            <option value="xs">XS</option>
+            <option value="s">s</option>
+            <option value="m" selected>M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+            <option value="xxl">XXL</option>
+            <option value="3xl">3XL</option>
+        </select>
+
+        <label for="product-color">สี</label>
+        <input type="radio" name="prdcolor" value="white"> ขาว
+        <input type="radio" name="prdcolor" value="black"> ดำ
+        <input type="radio" name="prdcolor" value="blue"> น้ำเงิน
+        <input type="radio" name="prdcolor" value="gray"> เทา
+
+
+        <label for="product-price">ราคา</label>
+        <input type="number" name="product-price" id="product-price" value="0.00" min="0" max="999999" step="10.0">
+
+        กรอกจำนวนเงิน
+
+
+        <label for="quantity">จำนวน</label>
+        <input type="number" name="quantity" id="quantity" value="1" min="1" max="100">
+
+        ชื่อรุ่น
+        <input type="text" name="product-name" id="product-name" placeholder="ชื่อรุ่น">
+
+        รายละเอียด
+        <textarea name="product-detail" id="product-detail" cols="30" rows="10" placeholder="รายละเอียดสินค้า"
+            maxlength="500">
+
+    </textarea>
+
+        วันที่ขาย ตั้งเเต่วันที่-สิ้นสุด
+        <input type="date" name="startdate" id="startdate">
+        <input type="date" name="enddate" id="enddate" min="2023-01-01" max="2023-12-31">
+
+        รูปภาพสินค้า
+        <input type="file" name="product-image" id="product-image" accept="image/*">
+
+        <input type="submit" value="บันทึกข้อมูลสินค้า">
+        <input type="reset" value="ล้างข้อมูล">
+    </form>
+
+    ลูกค้า สามารถ เลือกสินค้าได้
+    เเก้ว
+    กะรเป๋า
+    ร่ม
+    หมวก
+</body>

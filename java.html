@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+</head>
+
+<body>
+
+    <script>
+        console.log("Hello world");
+
+        let name = "Sahawit Pasitpaisan";
+        let age = 20;
+        let isStudent = true;
+
+        const major = "Computer Science";
+        const start = 0.00;
+        const end = 100.00;
+
+        // ข้อ 1
+        const birthDate = 2005;
+        const currentYear = 2025;
+        const ageInYears = currentYear - birthDate;
+        console.log(`name: ${name}, age: ${ageInYears}`);
+
+        // ข้อ 2
+        const student = {
+            name: "Sahawit Pasitpaisan",
+            score: 100,
+            isPassed: false,
+        };
+        console.log(student.name);
+        if (student.score >= 50) {
+            console.log("ผ่าน");
+        } else {
+            console.log("ไม่ผ่าน");
+        }
+
+        // ข้อ 3
+        for (let i = 0; i <= 20; i++) {
+            if (i % 2 === 0) {
+                console.log(i);
+            }
+        }
+
+        // ข้อ 4
+        const weather = ["hot", "cold", "rainy"];
+        for (let i = 0; i < weather.length; i++) {
+            switch (weather[i]) {
+                case "hot":
+                    console.log("อากาศร้อน");
+                    break;
+                case "cold":
+                    console.log("อากาศหนาว");
+                    break;
+                case "rainy":
+                    console.log("อากาศฝนตก");
+                    break;
+                default:
+                    console.log("ไม่ทราบสภาพอากาศ");
+            }
+        }
+
+        // ข้อ 5
+        const numbers = [3, 7, 2, 9, 5, 4, 6, 1, 8, 10];
+        let sum = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        console.log("ผลรวมของตัวเลขทั้งหมดใน Array คือ: " + sum);
+
+        const students = [
+            { name: "Sahawit", score: 100 },
+            { name: "John", score: 80 },
+            { name: "Jane", score: 90 }
+        ];
+        const filteredStudents = students.filter(student => student.score >= 90);
+        console.log(filteredStudents);
+
+        const updatedStudents = students.map(student => {
+            return {
+                ...student,
+                score: student.score + 5
+            };
+        });
+
+        // ข้อ 1
+        function calculatearea(width, height) {
+            return width * height;
+        }
+        let width = 10;
+        let height = 5;
+        let area = calculatearea(width, height);
+        console.log(`Area: ${area}`);
+
+        //ข้อ 2
+        const product = ["shirt", "pants", "shoes", "hat", "gloves"];
+        console.log("รายการสินค้า:", product);
+
+        //ข้อ 3
+        const names = ["Sahawit", "Jane", "Michael", "Ann", "Jonathan"];
+        const longNames = names.filter(name => name.length > 5);
+        console.log("ชื่อทั้งหมด:", names);
+        console.log("ชื่อที่ยาวมากกว่า 5 ตัวอักษร:", longNames);
+
+        //ข้อ 4
+        const prices = [100, 250, 300, 450, 150, 500, 80, 120, 350, 200];
+        const discountedPrices = prices.map(price => price * 0.9);
+        console.log("ราคาสินค้าก่อนลด:", prices);
+        console.log("ราคาสินค้าหลังหักส่วนลด 10%:", discountedPrices);
+
+        //ข้อ 5
+        function getAverageScore(scores) {
+            const sum = scores.reduce((accumulator, current) => accumulator + current, 0);
+            const average = sum / scores.length;
+            return average;
+        }
+        const studentScores = [80, 90, 75, 85, 60, 95, 70, 88, 92, 78];
+        const averageScore = getAverageScore(studentScores);
+        console.log("คะแนนเฉลี่ยของนักเรียนคือ:", averageScore);
+
+
+    </script>
+
+</body>
+
+</html>

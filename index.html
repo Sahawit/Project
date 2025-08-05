@@ -1,43 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Student Info</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/csmjustyle.css"
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!--<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>-->
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/csmjustyle.css">
+</head>
 
 <body>
     <header>
-        <h1>Hello world</h1>
-    </header>
+        <h1 class="lg:text-8xl font-bold text-center bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 bg-clip-text text-transparent sm:text-8xl">
+            Hello world</h1>
+    </header >
 
-    <nav>
-        Navigation area
-        <ol>
+    <nav class="bg-amber-300">
+        <ul class="flex space-x-3 justify-end px-10 text-center">
             <li><a href="/">Home</a></li>
             <li><a href="/about.html">About</a></li>
-            <li><a href="#">Home</a></li>
-        </ol>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
     </nav>
 
     <div>
-        <p>Hi!!!! Main content area</p>
-        <p>This is a paragraph.</p>
-
-        <h2 class="csmju-text">คณะวิทยาศาสตร์</h2>
-        <h3 class="csmju-text">ตารางรายชื่อนักศึกษา</h3>
-
-        <!-- รูปภาพที่ใส่เรียบร้อย -->
-        <img src="cat.jpg" alt="รูปนักศึกษา" width="300" style="display:block;">
-
+        <div class="mx-auto max-w-8xl py-32 bg-amber-200">
+            <h1 class="text-4xl font-bold">Hi!!!! 
+                Main content area</h1>
+            <p>This is a paragraph.</p>
+        
+            <h2 class="csmju-text">คณะวิทยาศาสตร์</h2>
+            <h3 class="csmju-text">ตารางรายชื่อนักศึกษา</h3>
+        </div>
+        <div class="grid grid-cols-2 gap-4 p-4">
+            <img src="image/image.jpg" alt="รูปนักศึกษา">
+            <img src="image/image.jpg" alt="รูปนักศึกษา">
+            <img src="image/image.jpg" alt="รูปนักศึกษา">
+        </div>
         <table border="1">
             <thead>
                 <tr>
@@ -55,7 +60,6 @@
             </tbody>
         </table>
 
-        <!-- ข่าว -->
         <div>
             <h3>ข่าว 1</h3>
             <p>วันที่ 01/01/25</p>
